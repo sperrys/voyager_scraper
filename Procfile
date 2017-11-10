@@ -1,1 +1,1 @@
-web: python voyager_scraper.py
+web: flask run
