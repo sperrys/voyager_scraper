@@ -1,0 +1,11 @@
+Voayger1 Distance Web Scraper
+
+This handy little webserver is a webscraper 
+that uses the voyager jpl website to scrape 
+the current distance (in miles) of the voyager 1
+probe. It use's selenium, beautiful soup, and the 
+chrome web driver to do the scraping of the dynamic
+content.
+
+There is only one route '/', this 
+returns the distance. 
