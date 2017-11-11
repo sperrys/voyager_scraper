@@ -1,1 +1,1 @@
-web: gunicorn voayger_scraper:app
+web: gunicorn voyager_scraper:app
