@@ -18,7 +18,11 @@ def get_distance():
 	URL = "https://voyager.jpl.nasa.gov/mission/status/"
 
 	# Start the WebDriver and load the page
-	wd = webdriver.Chrome()
+	wd = webdriver.ChromeOptions()
+	wd.add_argument('headless')
+
+	wd = webdriver.Chrome(chrome_options=wd)
+
 	wd.get(URL)
 
 	# Wait for the dynamically loaded elements to show up
