@@ -21,7 +21,10 @@ def get_distance():
 
 	opts = ChromeOptions()
 	opts.binary_location = chrome_bin
+
 	opts.add_argument('headless')
+	opts.add_argument('--disable-gpu')
+	opts.add_argument('--no-sandbox')
 
 	# Start the WebDriver and load the page
 	wd = webdriver.Chrome(executable_path="chromedriver", chrome_options=opts)
