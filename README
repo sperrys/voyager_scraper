@@ -9,3 +9,7 @@ content.
 
 There is only one route '/', this 
 returns the distance. 
+
+
+As of right now this works,
+all-be-it, slow at https://voyagerscraper.herokuapp.com/
