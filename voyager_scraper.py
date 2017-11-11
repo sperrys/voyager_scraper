@@ -17,11 +17,14 @@ def get_distance():
 
 	URL = "https://voyager.jpl.nasa.gov/mission/status/"
 
-	# Start the WebDriver and load the page
-	wd = webdriver.ChromeOptions()
-	wd.add_argument('headless')
+	chrome_bin = os.environ.get('GOOGLE_CHROME_SHIM', None)
 
-	wd = webdriver.Chrome(chrome_options=wd)
+	opts = ChromeOptions()
+	opts.binary_location = chrome_bin
+	opts.add_argument('headless')
+
+	# Start the WebDriver and load the page
+	wd = webdriver.Chrome(executable_path="chromedriver", chrome_options=opts)
 
 	wd.get(URL)
 
