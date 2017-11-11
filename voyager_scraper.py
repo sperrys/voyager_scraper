@@ -1,10 +1,11 @@
 import requests
 import time
+import os
 
 from contextlib import contextmanager
 from flask import Flask
 from bs4 import BeautifulSoup
-import os
+
 
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
