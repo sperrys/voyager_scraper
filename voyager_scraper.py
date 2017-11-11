@@ -9,8 +9,8 @@ from bs4 import BeautifulSoup
 
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver import ChromeOptions, Chrome
 from selenium.webdriver.common.by import By
-from selenium import webdriver
 
 app = Flask(__name__)
 
@@ -29,7 +29,7 @@ def get_distance():
 	opts.add_argument('--no-sandbox')
 
 	# Start the WebDriver and load the page
-	wd = webdriver.Chrome(executable_path="chromedriver", chrome_options=opts)
+	wd = Chrome(executable_path="chromedriver", chrome_options=opts)
 
 	wd.get(URL)
 
