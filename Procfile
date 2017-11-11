@@ -1,1 +1,1 @@
-web: gunicorn --bind 0.0.0.0:$PORT voayger_scraper.py
+web: gunicorn voayger_scraper:app
