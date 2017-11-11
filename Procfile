@@ -1,1 +1,1 @@
-web: python /app/voyager_scraper
+web: python /app/voyager_scraper.py
