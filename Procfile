@@ -1,1 +1,1 @@
-web: python /app/voyager_scraper.py
+web: gunicorn voyager_scraper:app
