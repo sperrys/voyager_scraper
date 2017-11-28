@@ -30,7 +30,6 @@ def get_distance():
 
 	# Start the WebDriver and load the page
 	wd = Chrome(executable_path="chromedriver", chrome_options=opts)
-
 	wd.get(URL)
 
 	# Wait for the dynamically loaded elements to show up
@@ -46,6 +45,7 @@ def get_distance():
 	distance = soup.find(id="voy1_km").get_text()
 	
 	sanitized = distance.split()[0]
+	no_commas = sanitized.replace(",", "")
 
 	return sanitized
 
