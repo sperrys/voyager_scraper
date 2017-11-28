@@ -47,7 +47,6 @@ def get_distance():
 	sanitized = distance.split()[0]
 	no_commas = sanitized.replace(",", "")
 
-	return sanitized
-
+	return no_commas
 if __name__ == "__main__":
 	app.run(host='0.0.0.0', port=5000)
