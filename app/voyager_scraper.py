@@ -1,11 +1,7 @@
-import requests
-import time
 import os
 
-from contextlib import contextmanager
 from flask import Flask
 from bs4 import BeautifulSoup
-
 
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -13,6 +9,7 @@ from selenium.webdriver import ChromeOptions, Chrome
 from selenium.webdriver.common.by import By
 
 app = Flask(__name__)
+
 
 @app.route('/')
 def get_distance():
@@ -33,8 +30,7 @@ def get_distance():
 	wd.get(URL)
 
 	# Wait for the dynamically loaded elements to show up
-	WebDriverWait(wd, 10).until(
-    	EC.visibility_of_element_located((By.ID, "voy1_km")))
+	WebDriverWait(wd, 10).until(EC.visibility_of_element_located((By.ID, "voy1_km")))
 
 	# And grab the page HTML source
 	html_page = wd.page_source
@@ -48,6 +44,7 @@ def get_distance():
 	no_commas = sanitized.replace(",", "")
 
 	return no_commas
+
 
 if __name__ == "__main__":
 	app.run(host='0.0.0.0', port=80)
