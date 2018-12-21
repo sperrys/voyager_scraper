@@ -5,11 +5,15 @@ from logging.handlers import RotatingFileHandler
 from flask import Flask
 from config import Config
 
+from .voyager_scraper import api
+
 
 def create_app(config_class=Config):
 
     app = Flask(__name__)
     app.config.from_object(config_class)
+
+    app.register_blueprint(api, url_prefix='/')
 
     if not app.debug and not app.testing:
         if app.config['LOG_TO_STDOUT']:

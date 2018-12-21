@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask
+from flask import Blueprint
 from bs4 import BeautifulSoup
 
 from selenium.webdriver.support.ui import WebDriverWait
@@ -8,10 +8,10 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver import ChromeOptions, Chrome
 from selenium.webdriver.common.by import By
 
-app = Flask(__name__)
+api = Blueprint('api', __name__)
 
 
-@app.route('/')
+@api.route('/')
 def get_distance():
 
 	URL = "https://voyager.jpl.nasa.gov/mission/status/"
@@ -44,7 +44,3 @@ def get_distance():
 	no_commas = sanitized.replace(",", "")
 
 	return no_commas
-
-
-if __name__ == "__main__":
-	app.run(host='0.0.0.0', port=80)
