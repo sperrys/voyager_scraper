@@ -14,12 +14,10 @@ api = Blueprint('api', __name__)
 @api.route('/')
 def get_distance():
 
-	URL = "https://voyager.jpl.nasa.gov/mission/status/"
+	URL = "https://science.nasa.gov/mission/voyager/where-are-they-now/"
 
-	chrome_bin = os.environ.get('GOOGLE_CHROME_SHIM', None)
 
 	opts = ChromeOptions()
-	opts.binary_location = chrome_bin
 
 	opts.add_argument('headless')
 	opts.add_argument('--disable-gpu')
