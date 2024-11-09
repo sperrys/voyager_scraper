@@ -28,7 +28,7 @@ def get_distance():
 	wd.get(URL)
 
 	# Wait for the dynamically loaded elements to show up
-	WebDriverWait(wd, 30).until(EC.visibility_of_element_located((By.ID, "voy1_km")))
+	WebDriverWait(wd, 20).until(EC.visibility_of_element_located((By.ID, "voy1_km")))
 
 	# And grab the page HTML source
 	html_page = wd.page_source
