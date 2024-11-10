@@ -14,7 +14,7 @@ api = Blueprint('api', __name__)
 @api.route('/')
 def get_distance():
 
-	URL = "https://science.nasa.gov/mission/voyager/where-are-they-now/"
+	URL = "https://voyager.jpl.nasa.gov/ticker2/hds/"
 
 
 	opts = ChromeOptions()
@@ -24,7 +24,7 @@ def get_distance():
 	opts.add_argument('--no-sandbox')
 
 	# Start the WebDriver and load the page
-	wd = Chrome(executable_path="chromedriver", chrome_options=opts)
+	wd = Chrome(options=opts)
 	wd.get(URL)
 
 	# Wait for the dynamically loaded elements to show up
@@ -37,7 +37,7 @@ def get_distance():
 	# parse html to get distance
 	soup = BeautifulSoup(html_page, "html.parser")
 	distance = soup.find(id="voy1_km").get_text()
-	
+
 	sanitized = distance.split()[0]
 	no_commas = sanitized.replace(",", "")
 
