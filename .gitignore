@@ -22,3 +22,8 @@ htmlcov
 
 logs/
 venv/
+chromedriver-mac-arm64/
+*.html
+page_debug.html
+voyager_new.html
+voyager_iframe.html
