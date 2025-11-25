@@ -24,14 +24,19 @@ def get_distance():
 	opts.add_argument('headless')
 	opts.add_argument('--disable-gpu')
 	opts.add_argument('--no-sandbox')
+	opts.add_argument('--disable-dev-shm-usage')  # Overcome limited resource problems on Heroku
 
-	# Get the path to the local chromedriver
+	# Check if we're on Heroku (or any Linux environment) vs local Mac
 	base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-	chromedriver_path = os.path.join(base_dir, 'chromedriver-mac-arm64', 'chromedriver')
-	service = Service(executable_path=chromedriver_path)
-
-	# Start the WebDriver and load the page
-	wd = Chrome(service=service, options=opts)
+	local_chromedriver = os.path.join(base_dir, 'chromedriver-mac-arm64', 'chromedriver')
+	
+	# Use local chromedriver if it exists (Mac), otherwise let Selenium Manager handle it (Heroku)
+	if os.path.exists(local_chromedriver):
+		service = Service(executable_path=local_chromedriver)
+		wd = Chrome(service=service, options=opts)
+	else:
+		# On Heroku or other platforms - let Selenium handle the driver
+		wd = Chrome(options=opts)
 	wd.get(URL)
 
 	# Wait for the dynamically loaded elements to show up
